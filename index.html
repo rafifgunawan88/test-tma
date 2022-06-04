@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js"></script>
+    <script src="https://cdn.datatables.net/searchpanes/2.0.1/js/dataTables.searchPanes.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.4.0/js/dataTables.select.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="chartcolumntableatas.js"></script>
+    <script src="chartpietableatas.js"></script>
+
+    <!-- Datatables -->
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.4.0/css/select.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/searchpanes/2.0.1/css/searchPanes.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.1.2/css/dataTables.dateTime.min.css" />
+
+    <title>PLAN TEST</title>
+
+    <style>
+      .card {
+        margin: 10px 0px 100px 0px;
+      }
+      .atas {
+        margin-top: 10px;
+      }
+      span {
+        float: right;
+        display: block;
+        font-size: 20px;
+        margin: 5px auto;
+      }
+      .chart {
+        margin-top: 10px;
+        margin-bottom: 30px;
+        margin-left: 0px;
+        margin-right: 0px;
+        border: 1px solid black;
+        height: 90%;
+        width: 100%;
+        border-radius: 5px;
+        padding: 0%;
+        display: inline-block;
+        position: relative;
+      }
+      .tabel-chart {
+        text-align: center;
+        height: 80%;
+        width: 100%;
+        display: inline-block;
+        position: relative;
+      }
+     
+      img {
+        margin: 10px auto;
+      }
+      div.dtsp-panesContainer {
+        display: none;
+      }
+      .dataTables_info {
+        display: none;
+      }
+      .scroll-left {
+        height: 50px;
+        overflow: hidden;
+        position: relative;
+        background: rgb(255, 255, 255);
+        color: rgb(255, 0, 0);
+        border: 1px solid rgb(255, 255, 255);
+      }
+      .scroll-left span {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        line-height: 50px;
+        text-align: center;
+        /* Starting position */
+        transform: translateX(100%);
+        /* Apply animation to this element */
+        animation: scroll-left 15s linear infinite;
+      }
+      /* Move it (define the animation) */
+      @keyframes scroll-left {
+        0% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- BAGIAN ACDEP -->
+    <div class="mx-auto" style="width: 90%">
+      <div class="row">
+        <div class="col-2">
+          <div class="card bg-danger" >
+            <img src="foto.jpeg" class="card-img-top" alt="fotouser" style="width: 50%" />
+            <div class="card-body">
+              <h5 class="card-title">Nama Lengkap</h5>
+              <p class="card-text">Email</p>
+              <div>
+                <button type="button" class="btn " data-bs-toggle="offcanvas" data-bs-target="#offcanvasNotification" style="background: rgb(129, 36, 36); color: white;">NOTIFICATION <span id="countnotif2" class="badge bg-secondary"></span></button><br />
+              </div>
+              <br />
+              <div>
+                <button type="button" class="btn btn-success" data-bs-toggle="offcanvas" data-bs-target="#offcanvasInbox">INBOX<span id="countinbox2" class="badge bg-secondary"></span></button><br />
+              </div>
+              <br /><br />
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">EXIT</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-5 atas">
+          <div class="scroll-left"><span>Assisting Your Bussines From The Heart</span></div>
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link bg-light text-dark" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">COLUMN</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active bg-danger text-white" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">PIE</button>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade chartcolumntableatas" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0"></div>
+            <div class="tab-pane fade show active chartpietableatas" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0"></div>
+          </div>
+        </div>
+        <div class="col-5 atas">
+          <table id="table-atas" class="table table-bordered table align-middle">
+            <thead class="table-secondary">
+              <tr>
+                <th scope="col">Day</th>
+                <th scope="col">Target Time (Hour)</th>
+                <th scope="col">Work Time (Hour)</th>
+                <th scope="col">Achievement (Precentage)</th>
+                <th scope="col">Overtime (Hour)</th>
+                <th scope="col">Description</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- AKHIR BAGIAN ACDEP -->
+
+    <!-- BAGIAN F -->
+    <div class="mx-auto" style="width: 90%">
+      <table border="0" cellspacing="5" cellpadding="5">
+        <tbody>
+          <tr>
+            <td>START DATE:</td>
+            <td><input type="text" id="min" name="min" /></td>
+          </tr>
+          <tr>
+            <td>END DATE:</td>
+            <td><input type="text" id="max" name="max" /></td>
+          </tr>
+        </tbody>
+      </table>
+      <table id="example" class="table table-bordered table-striped display nowrap">
+        <thead class="table-secondary">
+          <tr>
+            <th scope="col">DATE</th>
+            <th scope="col">TARGET TIME (HOUR)</th>
+            <th scope="col">WORK TIME (HOUR)</th>
+            <th scope="col">ACHIEVEMENT (PRECENTAGE)</th>
+            <th scope="col">OVERTIME (HOUR)</th>
+            <th scope="col">DAY</th>
+          </tr>
+        </thead>
+
+        <tbody></tbody>
+      </table>
+    </div>
+    <!-- AKHIR F -->
+
+    <!-- BAGIAN G,H,I -->
+    <div class="mx-auto" style="width: 90%">
+      <div class="row">
+        <span style="text-align: right"> YEAR SUMMARY PERFORMANCE </span>
+        <div class="col-4">
+          <table class="table table-bordered table align-middle">
+            <thead class="table-secondary">
+              <tr>
+                <th scope="col">COLUMN</th>
+              </tr>
+            </thead>
+            <tbody id="chartcolumn">
+              <tr>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-4">
+          <table class="table table-bordered">
+            <thead class="table-secondary">
+              <tr>
+                <th scope="col">PIE</th>
+              </tr>
+            </thead>
+            <tbody id="chartpie">
+              <tr>
+                <td class="chartpiee"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-4">
+          <table class="table table-bordered">
+            <thead class="table-secondary">
+              <tr>
+                <th scope="col">AREA</th>
+              </tr>
+            </thead>
+            <tbody id="chartarea">
+              <tr>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- AKHIR G,H,I -->
+
+    <!-- BAGIAN J,K,L,M -->
+    <div class="mx-auto m-5" style="width: 90%"></div>
+    <!-- BAGIAN J,K,L,M -->
+
+    <!-- BAGIAN FOOTER (N, O) -->
+
+    <footer class="p-1 d-flex fixed-bottom text-light bg-danger mx-auto" style="width: 90%">
+      <div class="p-1 flex-grow-1 text-start">TECH MAYANTRA ASIA</div>
+
+      <div class="p-1">
+        <span>
+          <button id="countinbox" type="button" class="badge bg-success mx-2"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasInbox" style="border-radius: 100%; border: 2px solid white"></button>
+        </span>
+        <span> </span>
+        <span>
+          <button id="countnotif" type="button" class="badge bg-danger"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasNotification" style="border-radius: 100%; border: 2px solid white"></button>
+        </span>
+      </div>
+      <div class="p-1 flex-shrink-1 fs-6">
+        <span id="date-wrapper" style="font-size: 10px"></span><br />
+        <span id="clock-wrapper" style="font-size: 10px"></span>
+      </div>
+    </footer>
+
+    <!-- AKHIR BAGIAN FOOTER (N, O) -->
+
+    <!-- Modal -->
+
+    <!-- EXIT -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">EXIT</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">Apakah anda yakin ingin keluar?</div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Exit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AKHIR EXIT -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasInbox" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">INBOX</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="row">
+          <div class="col">
+            <table id="modalinbox" class="table table-bordered table align-middle mx-auto" style="width: 95%">
+              <thead class="table-secondary">
+                <tr>
+                  <th scope="col">INBOX</th>
+                </tr>
+              </thead>
+              <tbody id="modalinboxbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNotification" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">NOTIFICATION</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="row">
+          <div class="col">
+            <table id="modalnotif" class="table table-bordered table align-middle mx-auto" style="width: 95%">
+              <thead class="table-secondary">
+                <tr>
+                  <th scope="col">NOTIF</th>
+                  <th scope="col">STATUS</th>
+                </tr>
+              </thead>
+              <tbody id="tbodymodalnotif"></tbody>
+            </table>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+   
+
+    <!-- AKHIR MODAL -->
+
+    <!-- HARI DAN TANGGAL -->
+    <script type="text/javascript">
+      var months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+      var myDays = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jum&#39;at", "Sabtu"];
+      var date = new Date();
+      var day = date.getDate();
+      var month = date.getMonth();
+      var thisDay = date.getDay(),
+        thisDay = myDays[thisDay];
+      var yy = date.getYear();
+      var year = yy < 1000 ? yy + 1900 : yy;
+      $("#date-wrapper").html(thisDay + ", " + day + " " + months[month] + " " + year);
+    </script>
+    <!-- AKHIR HARI DAN TANGGAL -->
+
+    <!-- JAM -->
+
+    <script>
+      setInterval(function () {
+        var date = new Date();
+        $("#clock-wrapper").html(date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds());
+      }, 500);
+    </script>
+
+    <!-- AKHIR JAM -->
+
+    <!-- SCRIPT NGAMBIL DATA KE TABEL -->
+
+    <script>
+      $("#example").DataTable({
+        ajax: {
+          url: "data.json",
+          dataSrc: "year_summary_performances",
+        },
+        columns: [{ data: "date" }, { data: "target_time" }, { data: "work_time" }, { data: "achievement" }, { data: "overtime" }, { data: "day" }],
+      });
+    </script>
+
+    <script>
+      $("#table-atas").DataTable({
+        ajax: {
+          url: "data.json",
+          dataSrc: "daily_performances",
+        },
+        columns: [{ data: "date" }, { data: "target_time" }, { data: "work_time" }, { data: "achievement" }, { data: "overtime" }, { data: "day" }],
+      });
+    </script>
+
+    <script>
+      $("#modalinbox").DataTable({
+        ajax: {
+          url: "data.json",
+          dataSrc: "inbox",
+        },
+        columns: [{ data: "inbox" }],
+      });
+    </script>
+
+    <script>
+      $("#modalnotif").DataTable({
+        ajax: {
+          url: "data.json",
+          dataSrc: "notif",
+        },
+        columns: [{ data: "notif" }, {data: "status"}],
+        "createdRow": function( row, data, dataIndex ) {
+        
+             if ( data.status == "danger" ) {        
+         $(row).addClass('bg-danger'); 
+             } else if ( data.status == "safe" ) {        
+         $(row).addClass('bg-success');
+             } else  {        
+         $(row).addClass('bg-warning');
+       }
+        }
+      
+      });
+    </script>
+
+    <!-- AKHIR SCRIPT NGAMBIL DATA KE TABEL -->
+
+    <!-- SCRIPT FILTER DATE -->
+
+    <script>
+      var minDate, maxDate;
+
+      // Custom filtering function which will search data in column four between two values
+      $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
+        var min = minDate.val();
+        var max = maxDate.val();
+        var date = new Date(data[0]);
+
+        if ((min === null && max === null) || (min === null && date <= max) || (min <= date && max === null) || (min <= date && date <= max)) {
+          return true;
+        }
+        return false;
+      });
+
+      $(document).ready(function () {
+        // Create date inputs
+        minDate = new DateTime($("#min"), {
+          format: "MMMM Do YYYY",
+        });
+        maxDate = new DateTime($("#max"), {
+          format: "MMMM Do YYYY",
+        });
+
+        // DataTables initialisation
+        var table = $("#example").DataTable();
+
+        // Refilter the table
+        $("#min, #max").on("change", function () {
+          table.draw();
+        });
+      });
+    </script>
+
+    <!-- AKHIR SCRIPT FILTER DATE -->
+
+    <!-- SCRIPT HIGHCART -->
+
+    <script>
+      $(document).ready(function () {
+        // Create DataTable
+        var table = $("#example").DataTable({
+          retrieve: true,
+          dom: "Pfrtip",
+        });
+
+        // Create the chart with initial data
+        var container = $("#chartcolumn");
+
+        var chart = Highcharts.chart(container[0], {
+          chart: {
+            type: "column",
+          },
+          title: {
+            text: "",
+          },
+          series: [
+            {
+              data: chartData(table),
+            },
+          ],
+        });
+
+        // On each draw, update the data in the chart
+        table.on("draw", function () {
+          chart.series[0].setData(chartData(table));
+        });
+      });
+
+      function chartData(table) {
+        var counts = {};
+
+        // Count the number of entries for each position
+        table
+          .column(3, { search: "applied" })
+          .data()
+          .each(function (val) {
+            if (counts[val]) {
+              counts[val] += 1;
+            } else {
+              counts[val] = 1;
+            }
+          });
+
+        // And map it to the format highcharts uses
+        return $.map(counts, function (val, key) {
+          return {
+            name: key,
+            y: val,
+          };
+        });
+      }
+    </script>
+
+    <script>
+      $(document).ready(function () {
+        // Create DataTable
+        var table = $("#example").DataTable({
+          retrieve: true,
+          dom: "Pfrtip",
+        });
+
+        // Create the chart with initial data
+        var container = $("#chartpie");
+
+        var chart = Highcharts.chart(container[0], {
+          chart: {
+            type: "pie",
+          },
+          title: {
+            text: "",
+          },
+          series: [
+            {
+              data: chartData(table),
+            },
+          ],
+        });
+
+        // On each draw, update the data in the chart
+        table.on("draw", function () {
+          chart.series[0].setData(chartData(table));
+        });
+      });
+
+      function chartData(table) {
+        var counts = {};
+
+        // Count the number of entries for each position
+        table
+          .column(3, { search: "applied" })
+          .data()
+          .each(function (val) {
+            if (counts[val]) {
+              counts[val] += 1;
+            } else {
+              counts[val] = 1;
+            }
+          });
+
+        // And map it to the format highcharts uses
+        return $.map(counts, function (val, key) {
+          return {
+            name: key,
+            y: val,
+          };
+        });
+      }
+    </script>
+
+    <script>
+      $(document).ready(function () {
+        // Create DataTable
+        var table = $("#example").DataTable({
+          retrieve: true,
+          dom: "Pfrtip",
+        });
+
+        // Create the chart with initial data
+        var container = $("#chartarea");
+
+        var chart = Highcharts.chart(container[0], {
+          chart: {
+            type: "area",
+          },
+          title: {
+            text: "",
+          },
+          series: [
+            {
+              data: chartData(table),
+            },
+          ],
+        });
+
+        // On each draw, update the data in the chart
+        table.on("draw", function () {
+          chart.series[0].setData(chartData(table));
+        });
+      });
+
+      function chartData(table) {
+        var counts = {};
+
+        // Count the number of entries for each position
+        table
+          .column(3, { search: "applied" })
+          .data()
+          .each(function (val) {
+            if (counts[val]) {
+              counts[val] += 1;
+            } else {
+              counts[val] = 1;
+            }
+          });
+
+        // And map it to the format highcharts uses
+        return $.map(counts, function (val, key) {
+          return {
+            name: key,
+            y: val,
+          };
+        });
+      }
+    </script>
+
+    <script></script>
+
+    <!-- AKHIR SCRIPT HIGHCHART -->
+
+    <!-- NGITUNG JUMLAH DATA -->
+    <script>
+    $.ajax({
+    url: 'data.json',
+    success: function (data){
+        hasil = data.notif.length;
+        $("#countnotif2").html(hasil);
+        $("#countnotif").html(hasil);
+    }
+})
+    </script>
+    <!-- NGITUNG JUMLAH DATA-->
+
+    <!-- NGITUNG JUMLAH DATA -->
+
+    <script>
+     $.ajax({
+    url: 'data.json',
+    success: function (data){
+        hasil = data.inbox.length;
+        $("#countinbox2").html(hasil);
+        $("#countinbox").html(hasil);
+        
+    }
+})
+    </script>
+
+    
+  </body>
+</html>

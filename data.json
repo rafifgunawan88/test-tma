@@ -1,0 +1,128 @@
+{
+  "year_summary_performances": [
+    {
+      "date": "2022-11-25",
+      "target_time": "4",
+      "work_time": "5",
+      "achievement": "40",
+      "overtime": "2",
+      "day": "sunday"
+    },
+    {
+      "date": "2022-11-20",
+      "target_time": "4",
+      "work_time": "5",
+      "achievement": "100",
+      "overtime": "2",
+      "day": "sunday"
+    },
+    {
+      "date": "2022-9-20",
+      "target_time": "4",
+      "work_time": "5",
+      "achievement": "100",
+      "overtime": "2",
+      "day": "sunday"
+    },
+    {
+      "date": "2022-10-20",
+      "target_time": "4",
+      "work_time": "5",
+      "achievement": "100",
+      "overtime": "2",
+      "day": "sunday"
+    },
+    {
+      "date": "2022-11-11",
+      "target_time": "4",
+      "work_time": "5",
+      "achievement": "100",
+      "overtime": "2",
+      "day": "sunday"
+    }
+  ],
+  "daily_performances": [
+    {
+      "date": "2022-11-25",
+      "target_time": "4",
+      "work_time": "2",
+      "achievement": "100",
+      "overtime": "2",
+      "day": "sunday"
+    },
+    {
+      "date": "2022-11-24",
+      "target_time": "4",
+      "work_time": "5",
+      "achievement": "100",
+      "overtime": "2",
+      "day": "sunday"
+    },
+    {
+      "date": "2022-11-23",
+      "target_time": "4",
+      "work_time": "5",
+      "achievement": "10",
+      "overtime": "2",
+      "day": "sunday"
+    },
+    {
+      "date": "2022-11-22",
+      "target_time": "4",
+      "work_time": "5",
+      "achievement": "900",
+      "overtime": "2",
+      "day": "sunday"
+    },
+    {
+      "date": "2022-11-21",
+      "target_time": "4",
+      "work_time": "5",
+      "achievement": "100",
+      "overtime": "2",
+      "day": "sunday"
+    }
+  ],
+  "inbox": [
+    {
+      "inbox": "Ini inbox pertama"
+    },
+    {
+      "inbox": "Ini inbox kedua"
+    },
+    {
+      "inbox": "Ini inbox ketiga"
+    },
+    {
+      "inbox": "Ini inbox keempat"
+    },
+    {
+      "inbox": "Ini inbox keenam"
+    },
+    {
+      "inbox": "Ini inbox kelima"
+    }
+  ],
+  "notif": [
+    {
+      "notif": "ini notif pertama",
+      "status": "danger"
+    },
+    {
+      "notif": "ini notif kedua",
+      "status": "warning"
+    },
+    {
+      "notif": "ini notif ktiga",
+      "status": "safe"
+    },
+    {
+      "notif": "ini notif keempat",
+      "status": "danger"
+    },
+    {
+      "notif": "ini notif kelima",
+      "status": "danger"
+    }
+  ]
+}
